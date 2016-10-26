@@ -1,0 +1,4 @@
+docker build --file Dockerfile.compile . -t battery-historian:compile
+docker run -v /Users/clem/zenly/battery-historian/compiled:/go/src/github.com/google/battery-historian/compiled battery-historian:compile
+docker build . -t battery-historian:latest
+docker run -d -p 80:9999 battery-historian:latest
