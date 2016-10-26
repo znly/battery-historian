@@ -1,11 +1,10 @@
-FROM golang:1.7
+FROM progrium/busybox
 
-ENV GO_PACKAGE github.com/google/battery-historian
+COPY bin/battery-historian /data/battery-historian
+COPY compiled /data/compiled
+COPY templates /data/templates
+COPY static /data/static
 
-COPY . /go/src/${GO_PACKAGE}
-
-WORKDIR /go/src/${GO_PACKAGE}
-
-ENTRYPOINT "./compiled/battery-historian"
-
+WORKDIR /data
+ENTRYPOINT "./battery-historian"
 EXPOSE 9999
